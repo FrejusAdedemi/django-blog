@@ -7,7 +7,11 @@
 {% block content %}
     <article class="post-detail">
         <h1>{{ post.title }}</h1>
-        <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
+        {% if post.thumbnail %}
+            <img src="{{ post.thumbnail.url }}" alt="{{ post.title }}">
+        {% else %}
+        <p><em>Pas de miniature pour cet article.</em></p>
+        {% endif %}
         <div>{{ post.content|linebreaks|safe }}</div>
     </article>
 {% endblock %}
